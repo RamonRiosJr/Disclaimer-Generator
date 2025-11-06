@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        fieldset {
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        legend {
+            font-size: 1.125rem;
+            font-weight: 600;
+            padding: 0 0.5rem;
+            color: #1a202c;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #4a5568;
+        }
+        input[type="text"], input[type="url"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 0.375rem;
+            box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        input[type="text"]:focus, input[type="url"]:focus {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px #bfdbfe;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 0.5rem;
+            height: 1rem;
+            width: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 p-4 md:p-8">
+
+    <main class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-lg shadow-xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Disclaimer Generator</h1>
+            <p class="text-lg text-gray-600 mt-2">Generate a website disclaimer for advice, affiliate links, and more.</p>
+        </header>
+
+        <form id="disclaimer-form">
+            
+            <!-- Section 1: Introduction -->
+            <fieldset>
+                <legend>1. Basic Information</legend>
+                <div>
+                    <label for="website-name">Website Name:</label>
+                    <input type="text" id="website-name" placeholder="e.g., Coqui Cloud">
+                </div>
+                <div class="mt-6">
+                    <label for="website-url">Website URL:</label>
+                    <input type="url" id="website-url" placeholder="https://www.coqui.cloud">
+                </div>
+            </fieldset>
+
+            <!-- Section 2: Types of Disclaimers -->
+            <fieldset>
+                <legend>2. Types of Disclaimers</legend>
+                <p class="text-gray-600 mb-4">Select all disclaimer clauses you need. All disclaimers include a general "for informational purposes" clause.</p>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="disclaimer-errors" checked>
+                    <label for="disclaimer-errors" class="font-semibold">Errors and Omissions Disclaimer</label>
+                </div>
+                <p class="text-sm text-gray-500 ml-5 mb-4">States that the information may not be accurate or complete. (Highly Recommended)</p>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="disclaimer-views">
+                    <label for="disclaimer-views" class="font-semibold">"Views Are My Own" Disclaimer</label>
+                </div>
+                <p class="text-sm text-gray-500 ml-5 mb-4">For personal blogs. States that views are the author's and not their employer's.</p>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="disclaimer-affiliate">
+                    <label for="disclaimer-affiliate" class="font-semibold">Affiliate Link Disclaimer</label>
+                </div>
+                <p class="text-sm text-gray-500 ml-5 mb-4">Discloses that you may earn a commission from links on your site.</p>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="disclaimer-medical">
+                    <label for="disclaimer-medical" class="font-semibold">Not Medical Advice Disclaimer</label>
+                </div>
+                <p class="text-sm text-gray-500 ml-5 mb-4">For health/wellness blogs. States the content is not a substitute for professional medical advice.</p>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="disclaimer-financial">
+                    <label for="disclaimer-financial" class="font-semibold">Not Financial Advice Disclaimer</label>
+                </div>
+                <p class="text-sm text-gray-500 ml-5 mb-4">For finance/investing blogs. States the content is not professional financial advice.</p>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="disclaimer-legal">
+                    <label for="disclaimer-legal" class="font-semibold">Not Legal Advice Disclaimer</label>
+                </div>
+                <p class="text-sm text-gray-500 ml-5 mb-4">States that the content on your site is not a substitute for advice from a qualified lawyer.</p>
+            </fieldset>
+            
+            <!-- Section 3: Contact -->
+            <fieldset>
+                <legend>3. Contact Us</legend>
+                <label for="contact-email">Contact Email or Page for questions about the disclaimer:</label>
+                <input type="text" id="contact-email" placeholder="e.g., support@coqui.cloud or https://coqui.cloud/contactus">
+            </fieldset>
+
+            <!-- Generate Button -->
+            <div class="text-center mt-8">
+                <button type="button" id="generate-btn" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:bg-blue-700 transition-all transform hover:scale-105">
+                    Generate Disclaimer
+                </button>
+            </div>
+        </form>
+
+        <!-- Coqui Cloud Static Promo Block -->
+        <div id="coqui-promo" class="mt-12 mb-6 p-6 bg-gray-50 border border-gray-200 rounded-lg shadow-md max-w-4xl mx-auto">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
+                <img src="https://coqui.cloud/web/image/website/1/logo/Coqui%20Cloud?unique=5caaf69" alt="Coqui Cloud Logo" class="h-12 w-auto mb-4 sm:mb-0">
+                <div class="flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900">Need a Custom Tool Like This?</h3>
+                    <p class="text-sm text-gray-600">This free generator was built by the experts at <strong>Coqui Cloud</strong>.</p>
+                </div>
+                <a href="https://coqui.cloud/contactus" target="_blank" rel="noopener noreferrer" class="mt-4 sm:mt-0 sm:ml-auto whitespace-nowrap inline-block bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition-colors">
+                    Contact Us Today
+                </a>
+            </div>
+            <p class="mt-4 text-gray-700 text-sm">
+                We build custom applications, automate business workflows, and are certified Odoo implementation partners. If you have an idea for a tool to save you time, let's talk.
+            </p>
+        </div>
+        <!-- End of Static Promo Block -->
+
+        <!-- Output Area -->
+        <div id="output-container" class="mt-10" style="display: none;">
+            <h2 class="text-2xl font-bold text-center mb-6">Your Generated Disclaimer</h2>
+            
+            <div id="output-controls" class="flex justify-end mb-4">
+                <button type="button" id="copy-btn" class="bg-green-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-green-700 transition-all">
+                    Copy to Clipboard
+                </button>
+            </div>
+            
+            <textarea id="output" readonly class="w-full h-96 p-4 border border-gray-300 rounded-lg bg-gray-50 shadow-inner resize-none"></textarea>
+            
+            <div id="copy-success" class="text-green-600 font-semibold text-center mt-2" style="display: none;">
+                Copied to clipboard!
+            </div>
+
+            <p class="text-sm text-center text-red-600 font-semibold mt-4">
+                <strong>Not Legal Advice</strong><br>
+                This tool generates a basic template for informational purposes only. It is <strong>NOT</strong> a substitute for professional legal advice. You are responsible for ensuring your final policy complies with all applicable laws (like GDPR, CCPA, etc.). You must consult with a qualified legal professional to ensure this policy is compliant and suitable for your needs.
+            </p>
+        </div>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const generateBtn = document.getElementById('generate-btn');
+            const outputContainer = document.getElementById('output-container');
+            const outputEl = document.getElementById('output');
+            const copyBtn = document.getElementById('copy-btn');
+            const copySuccessEl = document.getElementById('copy-success');
+
+            if (generateBtn) {
+                generateBtn.addEventListener('click', () => {
+                    // Collect all values
+                    const websiteName = document.getElementById('website-name').value.trim() || '[Your Website Name]';
+                    const websiteUrl = document.getElementById('website-url').value.trim() || '[Your Website URL]';
+                    const contact = document.getElementById('contact-email').value.trim() || '[Your Contact Email/Page]';
+                    const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                    let text = `DISCLAIMER\n\n`;
+                    text += `Last updated: ${today}\n\n`;
+                    
+                    text += `===== GENERAL DISCLAIMER =====\n\n`;
+                    text += `The information provided by ${websiteName} ("we," "us," or "our") on ${websiteUrl} (the "Site") is for general informational purposes only. All information on the Site is provided in good faith, however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the Site.\n\n`;
+                    text += `UNDER NO CIRCUMSTANCE SHALL WE HAVE ANY LIABILITY TO YOU FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF THE USE OF THE SITE OR RELIANCE ON ANY INFORMATION PROVIDED ON THE SITE. YOUR USE OF THE SITE AND YOUR RELIANCE ON ANY INFORMATION ON THE SITE IS SOLELY AT YOUR OWN RISK.\n\n`;
+
+                    // --- Errors and Omissions ---
+                    if (document.getElementById('disclaimer-errors').checked) {
+                        text += `===== ERRORS AND OMISSIONS DISCLAIMER =====\n\n`;
+                        text += `While we have made every attempt to ensure that the information contained in this site has been obtained from reliable sources, ${websiteName} is not responsible for any errors or omissions or for the results obtained from the use of this information.\n\n`;
+                    }
+
+                    // --- Views Are My Own ---
+                    if (document.getElementById('disclaimer-views').checked) {
+                        text += `===== "VIEWS ARE MY OWN" DISCLAIMER =====\n\n`;
+                        text += `The views and opinions expressed on this Site are those of the authors and do not necessarily reflect the official policy or position of any other agency, organization, employer, or company. Comments published by users are their sole responsibility and the users will take full responsibility, liability, and blame for any libel or litigation that results from something written in or as a direct result of something written in a comment.\n\n`;
+                    }
+
+                    // --- Affiliate Disclaimer ---
+                    if (document.getElementById('disclaimer-affiliate').checked) {
+                        text += `===== AFFILIATE DISCLAIMER =====\n\n`;
+                        text += `The Site may contain links to affiliate websites, and we receive an affiliate commission for any purchases made by you on the affiliate website using such links.\n\n`;
+                        text += `[Example: "We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn advertising fees by linking to Amazon.com and affiliated websites."]\n\n`;
+                    }
+                    
+                    // --- Professional Disclaimers ---
+                    let profDisclaimer = false;
+                    let profText = `===== PROFESSIONAL DISCLAIMERS =====\n\n`;
+                    profText += `The Site cannot and does not contain professional advice. The information is provided for general informational and educational purposes only and is not a substitute for professional advice.\n\n`;
+
+                    if (document.getElementById('disclaimer-medical').checked) {
+                        profDisclaimer = true;
+                        profText += `**Medical/Health Disclaimer:** The medical/health information is not advice. Before taking any actions based upon such information, we encourage you to consult with the appropriate medical and health professionals. We do not provide any kind of medical/health advice. THE USE OR RELIANCE OF ANY INFORMATION CONTAINED ON THIS SITE IS SOLELY AT YOUR OWN RISK.\n\n`;
+                    }
+                    
+                    if (document.getElementById('disclaimer-financial').checked) {
+                        profDisclaimer = true;
+                        profText += `**Financial Disclaimer:** The financial information is not advice. Before taking any actions based upon such information, we encourage you to consult with the appropriate financial professionals. We do not provide any kind of financial advice. THE USE OR RELIANCE OF ANY INFORMATION CONTAINED ON THIS SITE IS SOLELY AT YOUR OWN RISK.\n\n`;
+                    }
+                    
+                    if (document.getElementById('disclaimer-legal').checked) {
+                        profDisclaimer = true;
+                        profText += `**Legal Disclaimer:** The legal information is not advice. Before taking any actions based upon such information, we encourage you to consult with the appropriate legal professionals. We do not provide any kind of legal advice. THE USE OR RELIANCE OF ANY INFORMATION CONTAINED ON THIS SITE IS SOLELY AT YOUR OWN RISK.\n\n`;
+                    }
+
+                    if (profDisclaimer) {
+                        text += profText;
+                    }
+
+                    // --- Contact ---
+                    text += `===== CONTACT US =====\n\n`;
+                    text += `Should you have any feedback, comments, requests for technical support, or other inquiries, please contact us by email or page at: ${contact}\n`;
+                    
+                    // Display output
+                    outputEl.value = text;
+                    outputContainer.style.display = 'block';
+                    window.scrollTo(0, document.body.scrollHeight); // Scroll to bottom
+                });
+            }
+
+            // --- Copy Button Logic ---
+            if (copyBtn) {
+                copyBtn.addEventListener('click', () => {
+                    outputEl.select();
+                    try {
+                        document.execCommand('copy');
+                        copySuccessEl.style.display = 'block';
+                        setTimeout(() => {
+                            copySuccessEl.style.display = 'none';
+                        }, 2000);
+                    } catch (err) {
+                        console.error('Failed to copy text: ', err);
+                    }
+                    if (window.getSelection) {
+                        window.getSelection().removeAllRanges();
+                    } else if (document.selection) {
+                        document.selection.empty();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
